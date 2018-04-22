@@ -12,14 +12,12 @@ import { Menu, Dropdown } from 'antd'
 const menuitem = (
   <Menu>
     <Menu.Item style={{ background: '#333', fontSize: 14 }}>
-      <Link to='/counter' style={{ color: '#fff', fontWeight: 500, textAlign: 'center' }}>修改信息</Link>
+      <Link to='/setting' style={{ color: '#fff', fontWeight: 500, textAlign: 'center' }}>修改信息</Link>
     </Menu.Item>
     <Menu.Item style={{ background: '#333', fontSize: 14 }}>
       <Link to='/route' style={{ color: '#fff', fontWeight: 500, textAlign: 'center' }}>个人中心</Link>
     </Menu.Item>
-    <Menu.Item style={{ background: '#333', fontSize: 14 }}>
-      <Link to='/route' style={{ color: '#fff', fontWeight: 500, textAlign: 'center' }}>个人中心</Link>
-    </Menu.Item>
+   
 
   </Menu>
 )

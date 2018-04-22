@@ -32,7 +32,7 @@ class Route extends Component {
   }
   goBack = () => history.back()
   goSet = () => browserHistory.push({
-    pathname: '/addTravel',
+    pathname: '/setting',
     query:{
       labid: this.state.labId
     }

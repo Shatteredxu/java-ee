@@ -13,6 +13,7 @@ import Order from './Order'
 import Routes from './routes'
 import addRoute from './addRoute'
 import addTravel from './addTravel'
+import Setting from './Setting'
 
 /*  Note: Instead of using JSX, we recommend using react-router
     PlainRoute objects to build route definitions.   */
@@ -26,6 +27,7 @@ export const createRoutes = (store) => ({
     addRoute(store),
     Routes(store),
     Order(store),
+    Setting(store),
     CounterRoute(store),
     ZenRoute(store),
     ElapseRoute(store),

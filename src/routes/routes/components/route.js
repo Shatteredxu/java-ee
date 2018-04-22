@@ -16,41 +16,73 @@ const dataSource = [{
 }]
 
 const columns = [{
-  title: '姓名',
+  title: '路线名',
   dataIndex: 'name',
-  key: 'name'
+  key: 'name',
+  width:'20%'
 }, {
-  title: '时间',
-  dataIndex: 'age',
-  key: 'age'
+  title: '旅行团',
+  dataIndex: 'teamId',
+  key: 'teamId',
+  width:'15%'
 }, {
-  title: '住址',
-  dataIndex: 'address',
-  key: 'address'
-},, {
-  title: 'Action',
-  key: 'action',
-  render: (text, record) => (
-    <span>
-      <a href='javascript:;'>Delete</a>
-    </span>
-  )
-}]
+  title: '起点',
+  dataIndex: 'startPoint',
+  key: 'startPoint',
+  width: '15%'
+}, {
+    title: '终点',
+    dataIndex: 'endPoint',
+    key: 'endPoint',
+    width: '15%'
+  }, {
+    title: '所有景点',
+    dataIndex: 'allPoint',
+    key: 'allPoint',
+    width: '20%',
+    render:(text,record,index)=>{
+      return(
+        <div>
+          {text==null?'无':text}
+        </div>        
+      )
+    }
+  },{
+    title: '路线类型',
+    dataIndex: 'types',
+    key: 'types',
+    width: '15%',
+    render: (text, record, index) => {
+      return (
+        <div>
+          {text == 0 ? '省内' : text==1?'国内':'国际'}
+        </div>
+      )
+    }
+  }]
 export default class Zen extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: []
+    }
+  }
+  
   componentDidMount () {
-    POST('/getOrder.action', ``, re => {
+    POST('/getRoute.action', ``, re => {
       if (re.state == 1) {
-        console.log(re)
+        this.setState({data:re.data})
       } else {
 
       }
     })
   }
   render () {
+    const {data} = this.state
     return (
       <div className='detail_main_wrap'>
         <div className='order_list'>
-          <Table columns={columns} dataSource={dataSource} />
+          <Table columns={columns} dataSource={data} />
         </div>
       </div>
     )
