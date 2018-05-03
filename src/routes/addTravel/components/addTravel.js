@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import './addTravel.scss'
 import { POST } from '../../../components/commonModules/POST'
 import moment from 'moment'
-import { Form, Input, Tooltip, Icon, Select, Row, DatePicker,message, InputNumber, Checkbox, Button, AutoComplete } from 'antd'
+import { Form, Input, Tooltip, Icon, Select, Upload, DatePicker, message, InputNumber, Checkbox, Button, AutoComplete } from 'antd'
 const FormItem = Form.Item
 const AutoCompleteOption = AutoComplete.Option
 const { TextArea } = Input
@@ -97,8 +97,49 @@ class RegistrationForm extends Component {
         }
       }
     }
+    const { uploading } = this.state;
+    const uploadButton = (
+      <div>
+        <Icon type={this.state.loading ? 'loading' : 'plus'} />
+        <div className='ant-upload-text'>Upload</div>
+      </div>
+    )
+    const props = {
+      action: '//jsonplaceholder.typicode.com/posts/',
+      onRemove: (file) => {
+        this.setState(({ fileList }) => {
+          const index = fileList.indexOf(file);
+          const newFileList = fileList.slice();
+          newFileList.splice(index, 1);
+          return {
+            fileList: newFileList,
+          }
+        })
+      },
+      beforeUpload: (file) => {
+        this.setState(({ fileList }) => ({
+          fileList: [...fileList, file],
+        }));
+        return false;
+      },
+      fileList: this.state.fileList,
+    };
     return (
       <div className='add_route_css'>
+        <Upload {...props}>
+           <Button>
+            <Icon type='upload' /> Select File
+          </Button>
+         </Upload>
+        <Button
+          className='upload-demo-start'
+          type='primary'
+          onClick={this.handleUpload}
+          disabled={this.state.fileList.length === 0}
+          loading={uploading}
+        >
+          {uploading ? 'Uploading' : 'Start Upload' }
+        </Button>
         <Form onSubmit={this.handleSubmit}>
           <FormItem
             {...formItemLayout}
@@ -152,7 +193,7 @@ class RegistrationForm extends Component {
           )}
         >
             {getFieldDecorator('天数', {
-              rules: [{ required: true, message: '请输入具体天数'}]
+              rules: [{ required: true, message: '请输入具体天数' }]
             })(
               <InputNumber min={1} max={50} defaultValue={1} />
           )}

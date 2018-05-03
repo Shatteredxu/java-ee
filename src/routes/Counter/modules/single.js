@@ -18,7 +18,7 @@ export default class Single extends React.Component {
     })
   }
   render () {
-    const { name, price, startDate, days,id  } = this.props.item
+    const { name, price, startDate, days,id,rou,user  } = this.props.item
     return (
       <div className='main_mod'>
         <Row>
@@ -29,11 +29,11 @@ export default class Single extends React.Component {
               <Row>
                 <Col span={20}>
                   <div className='product_info' />
-                  <dl className='start_info'> <dt>西安出发</dt>
-                    <dd title='赠明城墙+陕历博珍宝馆门票+潼关黄河湾快艇+华山能量餐包+双景区讲解无线耳麦'>赠明城墙+陕历博珍宝馆门票+潼关黄河湾快艇+华山能量餐包+双景区讲解无线耳麦</dd>              </dl>
+                  <dl className='start_info'> <dt>{rou.startPoint}出发</dt>
+                    <dd title={rou.allPoint}>{rou.allPoint}</dd></dl>
                   <div className='product_schedule'> <p>  开始时间： {startDate}出发
             </p> </div>
-                  <p className='product_retail' title='西安新联邦国际旅行社有限公司'>导游：西安新联邦国旅<i className='saleout_icon' /></p>
+                  <p className='product_retail' title={user.uname}>导游：{user.uname}<i className='saleout_icon' /></p>
                 </Col>
               </Row>
             </div>

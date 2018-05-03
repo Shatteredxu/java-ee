@@ -30,7 +30,7 @@ class Passwd extends Component {
       if (!this.state.old) {
         message.error('请输入原密码')
         reject(0)
-      } else if (this.state.new.length < 6 || this.state.new.length > 15) {
+      } else if (this.state.new.length < 2 || this.state.new.length > 15) {
         message.error('密码应在6到15个字之间')
         reject(0)
       } else if (this.state.re != this.state.new) {
@@ -45,8 +45,8 @@ class Passwd extends Component {
   changePass() {
     this.confirm().then((re) => {
       if (re) {
-        var data = `oldPass=${this.state.old}&newPass=${this.state.new}`
-        POST('/user/alterPasswd', data, (re) => {
+        var data = `pass=${this.state.old}&newPass=${this.state.new}`
+        POST('/user/updateUserPass.action', data, (re) => {
           if (re.state == 1) {
             message.success('修改成功')
             location.reload()
@@ -74,7 +74,7 @@ class Passwd extends Component {
           <input type="password" placeholder='Re-password' onChange={(e) => this.changeValue(e, 3)} />
         </div>
         <div className="confirm" onClick={this.changePass.bind(this)}>
-          <button onClick={this.confirm.bind(this)}>确&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;定</button>
+          <button >确&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;定</button>
         </div>
       </div>
     );

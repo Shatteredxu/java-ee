@@ -9,7 +9,9 @@ export default class HomeView extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      groupList:[]
+      groupList:[],
+      user:[],
+      route:[]
     }
   }
   componentDidMount () {
@@ -21,13 +23,14 @@ export default class HomeView extends React.Component {
   }
   search (value) {
     console.log(value)
-    var data = `name=${value}`
-    POST('/getGroup.action', data, re => {
+    var data = `t=${value}`
+    POST('/getLikeGroup.action', data, re => {
       console.log(re)
       this.setState({ groupList:re.data })
     })
   }
   render () {
+    console.log(this.state.groupList.length )
     return (
       <div className='traBody'>
         <div className='searchInput'>
@@ -37,13 +40,13 @@ export default class HomeView extends React.Component {
             enterButton
           />
         </div>
-        {this.state.groupList.map((item, i) => {
+
+        {this.state.groupList.length ? this.state.groupList.map((item, i) => {
           return (
             <Single key={i} item={item} />
           )
-        })
+        }) : <span style={{display:'inline-block' ,margin:'0 auto'}}>没有可选择的</span>
         }
-
       </div>
     )
   }

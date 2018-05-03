@@ -8,7 +8,7 @@ const columns = [{
   title: '用户名',
   dataIndex: 'user.uname',
   key: 'user.uname',
-  width:'20%'
+  width:'10%'
 }, {
   title: '旅行团',
   dataIndex: 'tra.name',
@@ -46,11 +46,11 @@ export default class Zen extends Component {
   }
 
   componentDidMount () {
-    POST('/getOrder.action', ``, re => {
+    POST('/root/getOrder.action', ``, re => {
       if (re.state == 1) {
         this.setState({ data:re.data })
       } else {
-
+        message.error("输入错误")
       }
     })
   }

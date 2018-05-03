@@ -49,7 +49,7 @@ class Head extends Component {
     var formdata = new FormData()
     formdata.append('file',this.state.img)
     formdata.append('type','application/octet-stream')
-    POSTFile('/user/uploadHeadImg', formdata, (re) => {
+    POSTFile('/user/upHeadImg.action', formdata, (re) => {
       if (re.state == 1) {
         message.success('上传成功')
       } else if (re.state == -2) {
