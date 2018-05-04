@@ -62,7 +62,7 @@ class RegistrationForm extends Component {
         console.log(values)
         var data= `name=${values.name}&startPoint=${values.startPoint}
         &endPoint=${values.endPoint}&allPoint=${values.allPoint}&type=${values.types}`
-        POST('/addRoute.action',data,re=>{
+        POST('/root/addRoute.action',data,re=>{
           console.log(re)
         })
       }

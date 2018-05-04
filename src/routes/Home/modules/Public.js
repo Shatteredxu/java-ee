@@ -36,19 +36,16 @@ class Public extends Component {
         <div className='pub_head'>
           <h2>最新公告</h2>
         </div>
-
-        {this.state.list.map((item, i) => {
-          return (
-            <div className='pub_item' key={i} style={{ cursor:'pointer' }} >
-              <div className='time'>{moment(item.time).format('YYYY/MM/DD')}</div>
-              <a href=''>{item.title}</a>
-              <p>{item.content}</p>
-            </div>
-          )
-        })}
-
-        <div className='foot'>
-          <Pagination defaultCurrent={1} total={50} />
+        <div className='item'>
+          {this.state.list.map((item, i) => {
+            return (
+              <div className='pub_item' key={i} style={{ cursor:'pointer' }} >
+                <div className='time'>{moment(item.time).format('YYYY/MM/DD')}</div>
+                <a href=''>{item.title}</a>
+                <p>{item.content}</p>
+              </div>
+            )
+          })}
         </div>
       </div>
     )

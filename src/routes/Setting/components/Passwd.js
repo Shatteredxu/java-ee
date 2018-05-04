@@ -49,7 +49,7 @@ class Passwd extends Component {
         POST('/user/updateUserPass.action', data, (re) => {
           if (re.state == 1) {
             message.success('修改成功')
-            location.reload()
+            
           } else if (re.state == -1) {
             message.error('原密码错误')
           } else if (re.state == -2) {

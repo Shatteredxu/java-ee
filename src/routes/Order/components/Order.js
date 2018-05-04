@@ -14,7 +14,8 @@ const columns = [{
   dataIndex: 'tra.name',
   key: 'tra.name',
   width:'20%'
-}, {
+},
+{
   title: '时间',
   dataIndex: 'date1',
   key: 'date1',
@@ -22,11 +23,12 @@ const columns = [{
   render:(text, record, index) => {
     return (
       <div>
-        {moment().format(text, "YYYY-MM-DD")}
+        {moment(text).format('YYYY-MM-DD')}
       </div>
     )
   }
-}, {
+},
+{
   title: '人数',
   dataIndex: 'count1',
   key: 'count1',
@@ -36,6 +38,21 @@ const columns = [{
   dataIndex: 'price',
   key: 'price',
   width: '20%'
+}, {
+  title: '操作',
+  dataIndex: 'Action',
+  key: 'action',
+  width: '10%',
+  render: (text, record, index) => {
+    return (
+      <div>
+        <span>
+          <a onClick={(e, record) => { this.deleteTra(e, record.id) }}>Delete</a>
+          <Divider type='vertical' />
+        </span>
+      </div>
+    )
+  }
 }]
 export default class Zen extends Component {
   constructor (props) {
@@ -50,7 +67,17 @@ export default class Zen extends Component {
       if (re.state == 1) {
         this.setState({ data:re.data })
       } else {
-        message.error("输入错误")
+        message.error('输入错误')
+      }
+    })
+  }
+  deleteTra (e, id) {
+    e.preventDefault()
+    POST('/root/removeGroup.action', `id=${id}`, re => {
+      if (re.state == 1) {
+        message.success('删除成功')
+      } else{
+        message.error('发生错误，请稍后重试')
       }
     })
   }

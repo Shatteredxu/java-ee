@@ -60,7 +60,7 @@ class Route extends Component {
   handleOk = (e) => {
     console.log(e)
     var data=`title=${this.state.title}&content=${this.state.content}`
-    POST('/user/createMessage.action',data,re=>{
+    POST('/root/createMessage.action',data,re=>{
       if(re.state==1){
         message.success('发送成功')
       }
@@ -83,7 +83,7 @@ class Route extends Component {
   }
   render () {
     if (this.state.identity == 'root' || this.state.identity == 'teacher') {
-      var span = 8
+      var span = 6
     } else {
       var span = 12
     }
@@ -94,7 +94,7 @@ class Route extends Component {
             <Head userInfo={this.state.userInfo} lab={this.state.lab} />
           </Col>
           <Col span={20} style={{ paddingLeft: 5 }}>
-            <Content introduce={this.state.userInfo.introduce} />
+            {/* <Content introduce={this.state.userInfo.introduce} /> */}
             <div className='per_but'>
               <Row>
                 <Col span={span} style={{ paddingRight: 5 }}>

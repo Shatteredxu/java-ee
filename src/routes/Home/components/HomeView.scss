@@ -98,6 +98,7 @@ border-radius: 3px;
   position: relative; 
   box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.3);
   margin-top: 40px;
+  height: 700px;
   .pub_head {
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
@@ -109,6 +110,7 @@ border-radius: 3px;
     background-image: url('../assets/blight_rtl.png');
     background-position: right top;
     background-repeat: no-repeat;
+
 
     h2 {
       color: #fff;
@@ -127,7 +129,11 @@ border-radius: 3px;
       position: relative;     
     }
   }
-
+  .item{
+    overflow-y:scroll;
+    height:480px;
+    width: 100%;
+  }
   .pub_item {
     &:nth-child(2n+1) {
       background: #dee4e5;
