@@ -14,7 +14,7 @@ export var POST = (Url, data = {}, trueF, errorF = e => { }, timeout = 5000) => 
       },
       body: data
     })
-      .then(req => req.json())
+      .then(req => { return req.json() })
       .then(re => {
         if (re.status === 24) {
           alert('服务器错误')

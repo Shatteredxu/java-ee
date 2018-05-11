@@ -60,7 +60,18 @@ class Header extends React.Component {
                 订单列表
             </span>
             </Link>
-            
+            <Link activeClassName='active' to='/login'>
+              <span className='nav_item'>
+                <img src={item} alt='' />
+                登录
+            </span>
+            </Link>
+            <Link activeClassName='active' to='/register'>
+              <span className='nav_item'>
+                <img src={item} alt='' />
+                注册
+            </span>
+            </Link>
           </div>
         </div>
       </div>

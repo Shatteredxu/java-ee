@@ -45,7 +45,7 @@ export default class Zen extends Component {
     var travelId = JSON.parse(this.props.params.id)
     console.log(this.state.dateString)
     var data = `travelId=${travelId}&date1=${this.state.dataString}&count1=${this.state.count}&price=${this.state.sum}`
-    POST('/addOrder.action', data, (re) => {
+    POST('/root/addOrder.action', data, (re) => {
       if (re.state == 1) {
         message.success('购买成功')
       } else {

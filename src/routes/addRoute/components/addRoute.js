@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import './addRoute.scss'
 import { POST } from '../../../components/commonModules/POST'
 import moment from 'moment'
-import { Form, Input, Tooltip, Icon, Select, Row, Col, Checkbox, Button, AutoComplete } from 'antd'
+import { Form, Input, Tooltip, Icon, Select, Row, Col, Checkbox, Button, AutoComplete, message } from 'antd'
 const FormItem = Form.Item
 const AutoCompleteOption = AutoComplete.Option
 const { TextArea } = Input
@@ -60,10 +60,11 @@ class RegistrationForm extends Component {
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
         console.log(values)
-        var data= `name=${values.name}&startPoint=${values.startPoint}
+        var data = `name=${values.name}&startPoint=${values.startPoint}
         &endPoint=${values.endPoint}&allPoint=${values.allPoint}&type=${values.types}`
-        POST('/root/addRoute.action',data,re=>{
-          console.log(re)
+        POST('/root/addRoute.action', data, re => {
+
+          message.success('添加成功')
         })
       }
     })

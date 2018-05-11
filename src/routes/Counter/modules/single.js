@@ -9,6 +9,7 @@ export default class Single extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
+      item:this.props.item
     }
   }
   getDetail(id){
@@ -17,8 +18,12 @@ export default class Single extends React.Component {
       pathname: `/zen/${id}`
     })
   }
+  componentWillReceiveProps(nextProps){
+    this.setState({item:nextProps.item});
+  }
   render () {
-    const { name, price, startDate, days,id,rou,user  } = this.props.item
+    const { name, price, startDate, days,id,rou,user  } = this.state.item
+    console.log(this.state.item)
     return (
       <div className='main_mod'>
         <Row>

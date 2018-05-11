@@ -42,6 +42,7 @@ export default class HomeView extends React.Component {
         </div>
 
         {this.state.groupList.length ? this.state.groupList.map((item, i) => {
+          console.log(item)
           return (
             <Single key={i} item={item} />
           )
